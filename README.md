@@ -196,17 +196,6 @@ LOG_LEVEL=INFO
 - Verify PDF is valid and not corrupted
 - Check `backend/uploads/` directory permissions
 
-## 🚀 Production Deployment
-
-For production use:
-1. Set `allow_origins` in FastAPI CORS configuration to specific domains
-2. Use persistent database instead of in-memory cache
-3. Implement authentication/authorization
-4. Add request validation and rate limiting
-5. Use environment-specific configurations
-6. Implement proper error handling and logging
-7. Set up monitoring and alerting
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
