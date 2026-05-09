@@ -170,13 +170,6 @@ LOG_LEVEL=INFO
 
 ## 🧪 Development
 
-### Running Jupyter Notebook
-```bash
-jupyter notebook pageindex_RAG_simple.ipynb
-```
-
-This notebook contains examples and testing for the RAG pipeline.
-
 ### Code Organization
 - **Backend**: Clean separation of concerns with services layer (`PageIndexService`, `LLMService`, `RAGService`)
 - **Frontend**: Next.js app directory structure for better organization
