@@ -207,10 +207,6 @@ For production use:
 6. Implement proper error handling and logging
 7. Set up monitoring and alerting
 
-## 📄 License
-
-[Specify your license here]
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

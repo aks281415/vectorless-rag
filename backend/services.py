@@ -1,8 +1,3 @@
-"""
-Vectorless RAG POC — Service Layer
-PageIndex + DeepSeek + RAG orchestration
-"""
-
 import json
 import logging
 import os
@@ -16,9 +11,6 @@ load_dotenv()
 
 logger = logging.getLogger("vectorless.backend.services")
 
-# ──────────────────────────────────────────────
-# Tree Utilities (ported from pageindex.utils)
-# ──────────────────────────────────────────────
 
 def remove_fields(node: dict | list, fields: list[str]) -> dict | list:
     """Recursively remove specified fields from tree nodes."""
@@ -50,10 +42,6 @@ def create_node_mapping(node: dict | list, mapping: Optional[dict] = None) -> di
     return mapping
 
 
-# ──────────────────────────────────────────────
-# PageIndex Service
-# ──────────────────────────────────────────────
-
 class PageIndexService:
     """Wraps the PageIndex SDK for document processing."""
 
@@ -81,10 +69,6 @@ class PageIndexService:
         logger.info("Fetching tree from PageIndex for doc_id=%s", doc_id)
         return self.client.get_tree(doc_id, node_summary=True)["result"]
 
-
-# ──────────────────────────────────────────────
-# LLM Service (DeepSeek via OpenAI-compatible SDK)
-# ──────────────────────────────────────────────
 
 class LLMService:
     """Calls DeepSeek using the OpenAI-compatible API."""
@@ -123,10 +107,6 @@ class LLMService:
             if delta.content:
                 yield delta.content
 
-
-# ──────────────────────────────────────────────
-# RAG Service (Tree Search + Answer Generation)
-# ──────────────────────────────────────────────
 
 TREE_SEARCH_PROMPT = """
 You are given a question and a tree structure of a document.
