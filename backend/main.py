@@ -1,8 +1,3 @@
-"""
-Vectorless RAG POC — FastAPI Application
-Simple routes for PDF upload, status polling, and chat.
-"""
-
 import hashlib
 import json
 import logging
@@ -86,10 +81,6 @@ rag_service = RAGService(llm_service)
 load_cache()
 
 
-# ──────────────────────────────────────────────
-# Pydantic Models
-# ──────────────────────────────────────────────
-
 class ChatRequest(BaseModel):
     doc_id: str
     query: str
@@ -107,10 +98,6 @@ class ChatResponse(BaseModel):
     reasoning: str
     sources: list[SourceNode]
 
-
-# ──────────────────────────────────────────────
-# Routes
-# ──────────────────────────────────────────────
 
 @app.get("/api/health")
 async def health():
@@ -259,10 +246,6 @@ async def chat(request: ChatRequest):
         logger.exception("RAG pipeline error for doc_id=%s", request.doc_id)
         raise HTTPException(status_code=500, detail=f"RAG pipeline error: {str(e)}")
 
-
-# ──────────────────────────────────────────────
-# Run
-# ──────────────────────────────────────────────
 
 if __name__ == "__main__":
     import uvicorn
